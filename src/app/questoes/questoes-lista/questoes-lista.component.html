@@ -1,0 +1,89 @@
+<h1 class="mt-4">Questoes</h1>
+<ol class="breadcrumb mb-4">
+   <li class="breadcrumb-item active">Consulta</li>
+ </ol>
+<div class="container">
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+       {{mensagemSucesso}}
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngFor="mensagemErro">
+        {{mensagemErro}}
+      </div>
+    </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-warning" (click)='novoCadastro()'>
+        <i class="fa fa-plus"></i> Novo
+      </button>
+    </div>
+  </div>
+  <br/>
+
+  <div class="row" >
+    <div class="col-md-12">
+      <table class="table table-condensed table-hover">
+
+        <thead>
+          <tr>
+            <th>ID Questao</th>
+            <th>Descricao</th>
+            <th>Alternativa A</th>
+            <th>Alternativa B</th>
+            <th>Alternativa C</th>
+            <th>Alternativa D</th>
+            <th>Alternativa E</th>
+            <th>Alternativa Correta</th>
+            <th>Estado da Questao</th>
+            <th>Tipo da Questao</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let questao of questoes">
+              <td >{{questao.idQuestao}}</td>
+              <td >{{questao.descricaoQuestao}}</td>
+              <td >{{questao.alternativaA}}</td>
+              <td >{{questao.alternativaB}}</td>
+              <td >{{questao.alternativaC}}</td>
+              <td >{{questao.alternativaD}}</td>
+              <td >{{questao.alternativaE}}</td>
+              <td >{{questao.alternativaCorreta}}</td>
+              <td >{{questao.estadoQuestao}}</td>
+              <td >{{questao.tbTipoQuestaoidTipoQuestao.nomeTipoQuestao}}</td>
+
+
+
+              <td>
+                <button class="btn btn-primary"
+                routerLink="/questoes/form/{{questao.idQuestao}}">
+                  <i class="fa fa-edit" ></i>
+                </button>
+
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

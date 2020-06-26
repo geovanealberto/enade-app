@@ -1,0 +1,133 @@
+<h1 class="mt-4">Questoes</h1>
+<ol class="breadcrumb mb-4">
+   <li class="breadcrumb-item active">{{ questao.idQuestao? 'Edição' : 'Cadastro' }}</li>
+ </ol>
+
+ <div class='container'>
+   <form #usuarioForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-success" role="alert" *ngIf="success == true">
+            Questao Salva/Atualizada com sucesso!
+          </div>
+
+          <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+             {{erro}}
+          </div>
+        </div>
+    </div>
+
+        <div class ="row" >
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>ID:</label>
+              <input type="text" class="form-control" [ngModel]="questao.idQuestao" name="idQuestao "disabled="true"/>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="form-group">
+            <label>Descricão:*</label>
+            <input class="form-control" [(ngModel)]="questao.descricaoQuestao" name="descricaoQuestao"/>
+            </div>
+          </div>
+        </div>
+
+
+      <div class="row" *ngIf="questao.idTipoQuestao == 1">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Alternativa A:*</label>
+            <input type="text" class="form-control" [(ngModel)]="questao.alternativaA" name="alternativaA" />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Alternativa B:*</label>
+            <input type="text" class="form-control" [(ngModel)]="questao.alternativaB" name="alternativaB"/>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="questao.idTipoQuestao == 1">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Alternativa C:*</label>
+          <input type="text" class="form-control" [(ngModel)]="questao.alternativaC" name="alternativaC"/>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Alternativa D:*</label>
+          <input type="text" class="form-control" [(ngModel)]="questao.alternativaD" name="alternativaD"/>
+        </div>
+      </div>
+    </div>
+
+  <div class="row" *ngIf="questao.idTipoQuestao == 1">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Alternativa E:*</label>
+        <input type="text" class="form-control"  [(ngModel)]="questao.alternativaE" name="alternativaE" />
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Alternativa Correta:*</label>
+        <select class="form-control" [(ngModel)]="questao.alternativaCorreta" name="alternativaCorreta">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>E</option>
+            </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Estado da Questao:*</label>
+        <select class="form-control" [(ngModel)]="questao.estadoQuestao" name="estadoQuestao" >
+                <option value="1">Ativada</option>
+                <option value="2">Desativada</option>
+            </select>
+      </div>
+    </div>
+
+    <div class="col-md-6" *ngIf="!questao.idQuestao">
+      <div class="form-group">
+        <label>Tipo da Questao:*</label>
+        <select class="form-control" [(ngModel)]="questao.idTipoQuestao" name="idTipoQuestao"  (change)="limparCampos()" >
+                <option value="1">Objetiva</option>
+                <option value="2">Discursiva</option>
+            </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class= "btn btn-success" *ngIf = "!questao.idQuestao" >
+          <i class="fa fa-save"> </i> Salvar
+        </button>
+
+        <button type="submit" class= "btn btn-primary"  *ngIf = "questao.idQuestao" >
+          <i class="fa fa-sync-alt"> </i> Atualizar
+        </button>
+
+        <button type="button" class= "btn btn-danger ml-1"  (click)="voltarParaListagem()">
+          <i class="fa fa-arrow-alt-circle-left"> </i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
