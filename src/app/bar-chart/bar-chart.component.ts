@@ -5,8 +5,6 @@ import { ResultadosService } from '../resultados.service';
 import { Chart } from "./chart";
 
 
-
-
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -17,23 +15,29 @@ export class BarChartComponent implements OnInit {
   constructor(private resultadoService : ResultadosService) { }
 
 
-  chart = new Chart;
+  chart:Chart [] = [];
 
 
   ngOnInit(): void {
 
     this.resultadoService.carregarGrafico().subscribe(data=>{
 
-      this.chart==data;
 
-      this.barChartLabels = this.chart.nome.split(',');
+      this.chart=data;
 
-      var arraySalario = JSON.parse('[" + this.chart.nota + "]');
-      this.barChartLabels = this.chart.nota.split(',');
+      console.log(data);
+
+
+      this.barChartLabels = data.map(e => e.nome);
+
+      console.log(this.chart);
+
+
+       var arrayNota = JSON.parse('[' + this.chart.map(e => e.nota) + ']');
 
 
       this.barChartData = [
-        { data: arraySalario, label: 'Notas' }
+        { data: arrayNota, label: 'Notas' }
       ];
     });
   }
@@ -41,7 +45,7 @@ export class BarChartComponent implements OnInit {
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[];
+  barChartLabels: Label[] = [];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartPlugins = [];

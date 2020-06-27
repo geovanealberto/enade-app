@@ -43,9 +43,9 @@ deletar(resultado:Resultado) : Observable<any>{
   });
 }
 
-  carregarGrafico(){
+  carregarGrafico() : Observable<any>{
 
-    return this.http.get(`http://localhost:8080/api/resultado/relatorio/grafico`);
+    return this.http.get(`http://localhost:8080/api/resultado/grafico`);
   }
 
 }
