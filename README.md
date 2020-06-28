@@ -1,6 +1,11 @@
 # EnadeApp
 
+<<<<<<< HEAD
 BACKEND NO LINK: https://github.com/geovanealberto/ENADE.git
+=======
+BACKEND NO LINK:
+https://github.com/geovanealberto/ENADE.git
+>>>>>>> 6168383f9e3e91fe9ad3d0c07c529b271a8fa036
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 

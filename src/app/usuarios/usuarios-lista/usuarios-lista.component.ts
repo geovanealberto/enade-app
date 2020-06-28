@@ -41,7 +41,7 @@ export class UsuariosListaComponent implements OnInit {
 
   }
 
-  deletarUsuario(){
+  deletarUsuari-o(){
     this.service
     .deletar(this.usuarioSelecionado)
     .subscribe(
