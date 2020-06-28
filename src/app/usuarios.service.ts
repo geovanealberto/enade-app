@@ -36,4 +36,11 @@ deletar(usuario:Usuario) : Observable<any>{
   return this.http.delete<any> (`${this.apiURL}/${usuario.idUsuario}`);
 }
 
+downloadRelatorioUsuario(){
+  return this.http.get(`http://localhost:8080/api/usuarios/relatorio`, {responseType:'text'}).subscribe(data =>{
+  document.querySelector('iframe').src= data;
+
+  });
+}
+
 }

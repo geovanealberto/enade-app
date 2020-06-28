@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/usuarios/usuario';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
+  usuarios:Usuario[]=[];
   convidadoLogado: string;
 
   constructor(

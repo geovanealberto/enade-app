@@ -13,12 +13,13 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class UsuariosListaComponent implements OnInit {
 
+  usuarioService
   usuarios:Usuario[] = [];
   //tipoUsuario:TipoUsuario[] = [];
   usuarioSelecionado : Usuario;
   mensagemSucesso: string;
   mensagemErro:string;
-  
+
 
 
   constructor(
@@ -51,5 +52,9 @@ export class UsuariosListaComponent implements OnInit {
     erro =>this.mensagemErro = 'ocorreu um erro ao deletar usuario.'
 
     )
+  }
+
+  imprimeRelatorioUsuario(){
+    this.service.downloadRelatorioUsuario();
   }
 }
